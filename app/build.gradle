@@ -1,7 +1,6 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
@@ -51,9 +50,6 @@ dependencies {
     compile dependencies.okhttpLoggingInterceptor
 
     compile dependencies.glide
-    compile dependencies.dagger
-    kapt dependencies.daggerCompiler
-    provided dependencies.javaxAnnotation
 
     compile dependencies.kotlinStdlib
     compile dependencies.kotlinReflect

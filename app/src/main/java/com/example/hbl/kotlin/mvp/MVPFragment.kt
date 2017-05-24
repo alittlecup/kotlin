@@ -7,12 +7,29 @@ import android.support.annotation.CallSuper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.hbl.kotlin.mvp.IPresenter
+import com.example.hbl.kotlin.mvp.IView
 
 /**
  * @author nekocode (nekocode.cn@gmail.com)
  */
-open class LifecycleFragment : Fragment(), RxLifecycle.Impl {
+abstract class MVPFragment<P : IPresenter> : Fragment(), IView {
     override val lifecycle = RxLifecycle()
+
+    override fun toast(s: String) {
+        toast(s)
+    }
+
+    override fun showLoading() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun dismissLoading() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
+
 
     @CallSuper
     override fun onAttach(context: Context?) {

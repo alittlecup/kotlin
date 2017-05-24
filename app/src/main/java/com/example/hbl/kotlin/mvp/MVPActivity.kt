@@ -1,15 +1,19 @@
 package com.example.hbl.kotlin.mvp
 
 import android.os.Bundle
-import cn.nekocode.kotgo.component.rx.LifecycleActivity
+import android.support.annotation.CallSuper
+import android.support.v7.app.AppCompatActivity
+import cn.nekocode.kotgo.component.rx.RxLifecycle
 
-abstract class MVPActivity<T : IView, P : BasePresenter<T>> : LifecycleActivity(), IView {
-    lateinit var mPresenter: P
+abstract class MVPActivity<P : IPresenter> : AppCompatActivity(), IView {
+    override val lifecycle = RxLifecycle()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycle.onCreate()
         setContentView(setLayoutId())
-        mPresenter=initPresenter()
+        initView()
     }
+    abstract fun initView()
 
 
     override fun toast(s: String) {
@@ -25,5 +29,42 @@ abstract class MVPActivity<T : IView, P : BasePresenter<T>> : LifecycleActivity(
     }
 
     abstract fun setLayoutId(): Int
-    abstract fun initPresenter(): P
+
+
+    @CallSuper
+    override fun onRestart() {
+        super.onRestart()
+        lifecycle.onRestart()
+    }
+
+    @CallSuper
+    override fun onStart() {
+        super.onStart()
+        lifecycle.onStart()
+    }
+
+    @CallSuper
+    override fun onResume() {
+        super.onResume()
+        lifecycle.onResume()
+    }
+
+    @CallSuper
+    override fun onPause() {
+        lifecycle.onPause()
+        super.onPause()
+    }
+
+    @CallSuper
+    override fun onStop() {
+        lifecycle.onStop()
+        super.onStop()
+    }
+
+    @CallSuper
+    override fun onDestroy() {
+        lifecycle.onDestroy()
+        super.onDestroy()
+    }
 }
+

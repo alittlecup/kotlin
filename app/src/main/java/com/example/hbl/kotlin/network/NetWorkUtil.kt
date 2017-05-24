@@ -9,20 +9,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * Created by hbl on 2017/5/22.
  */
-class NetWork {
+class NetWorkUtil {
 
     companion object {
-        val builder by lazy {
+        private val builder by lazy {
             Retrofit.Builder()
         }
-        val gsonDateFormat by lazy {
+        private val gsonDateFormat by lazy {
             GsonBuilder().setDateFormat("yyyy-MM-dd hh:mm:ss").create()
         }
 
         fun <T> getService(client: OkHttpClient, cls: Class<T>): T {
             var retrofit = builder
                     .client(client)
-                    .baseUrl("")
+                    .baseUrl("http://gank.io/api/data/")
                     .addConverterFactory(GsonConverterFactory.create(gsonDateFormat))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build()

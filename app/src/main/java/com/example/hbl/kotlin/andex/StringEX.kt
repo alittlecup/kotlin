@@ -23,4 +23,4 @@ package com.example.hbl.kotlin.andex
  * Return if string is pure numeric text
  * @param string
  */
-fun isNumeric(string : String) = string.matches(Regex("\\d+"));
+fun isNumeric(string : String) = string.matches(Regex("\\d+"))

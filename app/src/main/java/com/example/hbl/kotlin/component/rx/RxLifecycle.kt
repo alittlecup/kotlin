@@ -59,26 +59,4 @@ class RxLifecycle {
     fun onDestroy() {
         behavior.onNext(Event.DESTROY)
     }
-
-    interface Impl {
-        val lifecycle: RxLifecycle
-
-        fun <T> Observable<T>.bindLifecycle(): Observable<T> {
-            return compose(CheckUIDestroiedTransformer<T>(lifecycle))
-        }
-    }
-
-    private class CheckUIDestroiedTransformer<T>(val lifecycle: RxLifecycle) :
-            ObservableTransformer<T, T> {
-
-        override fun apply(upstream: Observable<T>): ObservableSource<T> {
-            return upstream.takeUntil(
-                    lifecycle.behavior.skipWhile {
-                        it != RxLifecycle.Event.DESTROY_VIEW &&
-                                it != RxLifecycle.Event.DESTROY &&
-                                it != RxLifecycle.Event.DETACH
-                    }
-            )
-        }
-    }
 }
