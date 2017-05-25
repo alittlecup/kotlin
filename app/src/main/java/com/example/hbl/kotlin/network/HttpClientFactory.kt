@@ -1,7 +1,10 @@
 package com.example.hbl.kotlin.network
 
-import com.example.hbl.kotlin.network.interceptor.LoggerInterceptor
+import com.example.hbl.kotlin.BuildConfig
+import com.example.hbl.kotlin.network.interceptor.HeaderInterceptor
+import com.example.hbl.kotlin.select
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit
 
 /**
@@ -17,8 +20,13 @@ class HttpClientFactory {
             OkHttpClient.Builder()
                     .connectTimeout(DEFAUT_CONNECT_TIMEOUT, TimeUnit.SECONDS)
                     .readTimeout(DEFAUT_READ_TIMEOUT, TimeUnit.SECONDS)
-                    .addInterceptor(LoggerInterceptor())
-//                    .addInterceptor(HeaderInterceptor())
+                    .addInterceptor(HeaderInterceptor())
+                    .addInterceptor(
+                        HttpLoggingInterceptor().setLevel(select(
+                                BuildConfig.DEBUG,
+                                HttpLoggingInterceptor.Level.BODY,
+                                HttpLoggingInterceptor.Level.NONE))
+                    )
                     .hostnameVerifier { hostname, session -> true }
         }
 

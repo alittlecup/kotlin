@@ -1,6 +1,8 @@
 package com.example.hbl.kotlin
 
+import android.support.design.widget.Snackbar
 import android.util.Log
+import android.view.View
 import cn.nekocode.kotgo.component.rx.RxLifecycle
 import com.example.hbl.kotlin.mvp.IView
 import io.reactivex.Observable
@@ -45,4 +47,7 @@ private class CheckUIDestroiedTransformer<T>(val lifecycle: RxLifecycle) :
                 }
         )
     }
+}
+fun snack(view:View,msg:String){
+    Snackbar.make(view,msg,Snackbar.LENGTH_SHORT).show()
 }

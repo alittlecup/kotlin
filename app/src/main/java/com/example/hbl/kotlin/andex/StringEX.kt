@@ -15,6 +15,8 @@
 
 package com.example.hbl.kotlin.andex
 
+import android.text.TextUtils
+
 /**
  * Created by ohmer on 12/29/15.
  */
@@ -24,3 +26,4 @@ package com.example.hbl.kotlin.andex
  * @param string
  */
 fun isNumeric(string : String) = string.matches(Regex("\\d+"))
+fun String.isEmpty():Boolean=TextUtils.isEmpty(this)

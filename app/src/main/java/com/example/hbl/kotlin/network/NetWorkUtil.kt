@@ -1,5 +1,6 @@
 package com.example.hbl.kotlin.network
 
+import com.example.hbl.kotlin.GitHubConfig
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -22,7 +23,7 @@ class NetWorkUtil {
         fun <T> getService(client: OkHttpClient, cls: Class<T>): T {
             var retrofit = builder
                     .client(client)
-                    .baseUrl("http://gank.io/api/data/")
+                    .baseUrl(GitHubConfig.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create(gsonDateFormat))
                     .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build()

@@ -8,8 +8,10 @@ import com.example.hbl.kotlin.mvp.IView
  */
 interface LoginContract {
     interface View : IView {
+        fun logingSuccess()
     }
     interface Presenter : IPresenter {
         fun loadData()
+        fun login(name:String,password:String)
     }
 }
