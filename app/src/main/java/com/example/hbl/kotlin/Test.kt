@@ -56,7 +56,7 @@ fun isPalindrome(s: String): Boolean {
     }
     return true
 }
-
+data class Prese(val name:String,val age:Int)
 fun main(args: Array<String>) {
     val user = User()
     user.name = "Carl"

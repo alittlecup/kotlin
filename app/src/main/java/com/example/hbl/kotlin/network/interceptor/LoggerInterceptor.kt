@@ -1,6 +1,6 @@
 package com.example.hbl.kotlin.network.interceptor
 
-import com.example.hbl.kotlin.log
+import com.example.hbl.library.extensions.log
 import okhttp3.Headers
 import okhttp3.Interceptor
 import okhttp3.Response
