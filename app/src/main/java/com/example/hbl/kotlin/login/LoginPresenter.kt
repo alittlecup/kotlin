@@ -5,9 +5,9 @@ import com.example.hbl.kotlin.GitHubConfig
 import com.example.hbl.kotlin.UserManager
 import com.example.hbl.kotlin.data.CreateAuthorization
 import com.example.hbl.kotlin.network.NetWorkUtil
-import com.example.hbl.library.extensions.log
-import com.example.hbl.library.mvp.BasePresenter
-import com.example.hbl.library.mvp.bindLifecycle
+import com.example.hbl.kotlin.extensions.log
+import com.example.hbl.kotlin.mvp.BasePresenter
+import com.example.hbl.kotlin.mvp.bindLifecycle
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

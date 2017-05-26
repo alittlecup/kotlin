@@ -1,13 +1,16 @@
 package com.example.hbl.kotlin.login
 
+import android.content.Intent
 import com.example.hbl.kotlin.R
-import com.example.hbl.library.extensions.snack
-import com.example.hbl.library.mvp.MVPActivity
+import com.example.hbl.kotlin.dir.CodeReadActivity
+import com.example.hbl.kotlin.extensions.snack
+import com.example.hbl.kotlin.mvp.MVPActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : MVPActivity<LoginPresenter>(), LoginContract.View {
     override fun logingSuccess() {
         snack(singIn,"Login Success")
+        startActivity(Intent(this,CodeReadActivity::class.java))
     }
 
     override val mPresenter = LoginPresenter(this)
@@ -15,6 +18,7 @@ class MainActivity : MVPActivity<LoginPresenter>(), LoginContract.View {
         singIn.setOnClickListener {
            if(!edName.text.isEmpty()&&!edPwd.text.isEmpty()){
                mPresenter.login(edName.text.toString(),edPwd.text.toString())
+               singIn.requestFocus()
            }
         }
     }

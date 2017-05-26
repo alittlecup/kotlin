@@ -1,6 +1,6 @@
 package com.example.hbl.kotlin.network.interceptor
 
-import com.example.hbl.library.extensions.log
+import com.example.hbl.kotlin.extensions.log
 import okhttp3.Headers
 import okhttp3.Interceptor
 import okhttp3.Response
@@ -52,7 +52,6 @@ class LoggerInterceptor : Interceptor {
             }
             val buffer = Buffer()
             requestBody.writeTo(buffer)
-            val contentType = requestBody.contentType()
             var charset = requestBody.contentType()?.charset(UTF8) ?: UTF8
             if (isPlaintext(buffer)) log(buffer.readString(charset))
         }

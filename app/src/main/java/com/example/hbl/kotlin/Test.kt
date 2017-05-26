@@ -57,9 +57,29 @@ fun isPalindrome(s: String): Boolean {
     return true
 }
 data class Prese(val name:String,val age:Int)
+var a:Int?=null
 fun main(args: Array<String>) {
-    val user = User()
-    user.name = "Carl"
-    user.list = mutableListOf("A", "B", "C")
-    user.list = mutableListOf("Tom", "Bob", "Cala")
+
+//    val user = User()
+//    user.name = "Carl"
+//    user.list = mutableListOf("A", "B", "C")
+//    user.list = mutableListOf("Tom", "Bob", "Cala")
+//    a?.let { println(it) }?: a.let { a=10 }
+//    println("asdf:"+a)
+//    a?.let { println(it) }?:a.let { a=20 }
+//    println("end $a")
+
+    println(split("a.java"))
+   
 }
+fun split(s:String):String{
+    val lastIndexOf = s.lastIndexOf(".")
+    if(lastIndexOf!=-1){
+        var substring = s.substring(lastIndexOf+1)
+        return substring
+    }
+    return s
+}
+
+
+

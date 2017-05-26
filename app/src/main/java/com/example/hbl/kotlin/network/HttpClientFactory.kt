@@ -1,8 +1,8 @@
 package com.example.hbl.kotlin.network
 
 import com.example.hbl.kotlin.BuildConfig
+import com.example.hbl.kotlin.extensions.select
 import com.example.hbl.kotlin.network.interceptor.HeaderInterceptor
-import com.example.hbl.kotlin.select
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import java.util.concurrent.TimeUnit

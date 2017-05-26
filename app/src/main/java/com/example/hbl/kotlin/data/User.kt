@@ -150,8 +150,8 @@ class User : Parcelable {
                 return User(source)
             }
 
-            override fun newArray(size: Int): Array<User> {
-                return newArray(size)
+            override fun newArray(size: Int): Array<User?> {
+                return arrayOfNulls<User>(size)
             }
         }
     }

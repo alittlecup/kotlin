@@ -1,7 +1,7 @@
 package com.example.hbl.kotlin.login
 
-import com.example.hbl.library.mvp.IPresenter
-import com.example.hbl.library.mvp.IView
+import com.example.hbl.kotlin.mvp.IPresenter
+import com.example.hbl.kotlin.mvp.IView
 
 
 /**
