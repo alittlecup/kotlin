@@ -9,13 +9,16 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import com.example.hbl.kotlin.R
+import com.example.hbl.kotlin.coderead.CoReaderDbHelper
+import com.example.hbl.kotlin.coderead.Navigator
+import com.example.hbl.kotlin.coderead.Repo
 import com.example.hbl.kotlin.mvp.MVPActivity
 import kotlinx.android.synthetic.main.activity_codereader.*
 import kotlinx.android.synthetic.main.view_chooser_recycler.*
 import java.io.File
 import java.util.*
 
-class CodeReadActivity() : MVPActivity<CodeReadPresenter>(),
+class CodeReadActivity : MVPActivity<CodeReadPresenter>(),
         CodeReadContract.View,
         DirectoryFileAdapter.OnDirectoryClickListener,
         DirectoryFileAdapter.OnNodeSelectListener {
@@ -141,10 +144,9 @@ class CodeReadActivity() : MVPActivity<CodeReadPresenter>(),
 
     override fun onNodeSelected(node: FileNode) {
         //TODO
-//        val intent = intent
-//        intent.putExtra(NavigatorChooser.EXTRA_FILE_NODE, node)
-//        setResult(Activity.RESULT_OK, intent)
-//        finish()
+        val repo = Repo.parse(node)
+        repo.id = "${CoReaderDbHelper.getInstance(this).insertRepo(repo)}"
+        Navigator.startCodeReadActivity(this, repo)
     }
 
     override fun onBackPressed() {

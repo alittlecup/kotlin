@@ -1,0 +1,69 @@
+<!doctype html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0,minimum-scale=1.0"/>
+<script src="lib/codemirror.js"></script>
+<link rel="stylesheet" href="lib/codemirror.css">
+<script src="mode/meta.js"></script>
+<script src="mode/loadmode.js"></script>
+<style type="text/css">
+      .CodeMirror {
+        border: 1px solid #eee;
+        height: auto;
+      }
+</style>
+
+<body><textarea id="code">
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:2.3.0&#39;
+        classpath &#39;me.tatarka:gradle-retrolambda:3.2.5&#39;
+        classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.8&#39;
+        classpath &#39;com.squareup.sqldelight:gradle-plugin:0.4.4&#39;
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+        mavenCentral()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+
+</textarea></body>
+
+<script>
+    	CodeMirror.modeURL = "mode/%N/%N.js";
+        var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
+        lineNumbers: false,
+        matchBrackets: true,
+        scrollbarStyle:null,
+        readOnly:"nocursor",
+        lineWrapping:false
+      });
+        var info = CodeMirror.findModeByExtension('gradle');
+        if (info) {
+            mode = info.mode;
+            spec = info.mime;
+            }
+
+        if (mode) {
+            editor.setOption("mode", spec);
+            CodeMirror.autoLoadMode(editor, mode);
+        } else {
+            alert("Could not find a mode corresponding to " + val);
+        }
+
+</script>
+

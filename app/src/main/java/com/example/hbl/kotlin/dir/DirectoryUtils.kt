@@ -3,7 +3,6 @@ package com.example.hbl.kotlin.dir
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Environment
-import org.jetbrains.annotations.NotNull
 import java.io.File
 import java.util.*
 
@@ -21,7 +20,7 @@ object DirectoryUtils {
         return null
     }
 
-    fun getFileDirectory(@NotNull file: File): FileNode {
+    fun getFileDirectory( file: File): FileNode {
         val fileNod = FileNode()
         fileNod.name = file.name
         fileNod.absolutePath = file.absolutePath
@@ -29,7 +28,7 @@ object DirectoryUtils {
             fileNod.isFolder = true
             fileNod.childNodes = arrayListOf<FileNode>()
             for (childFile in file.listFiles()) {
-                if (childFile.name.startsWith(".") || childFile.name.startsWith("_"))
+                if (childFile!!.name.startsWith(".") || childFile.name.startsWith("_"))
                     continue
                 val node = FileNode()
                 node.name = childFile.name
