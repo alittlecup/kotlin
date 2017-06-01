@@ -75,4 +75,13 @@
     <string name="about_fir_download">Fir Download</string>
     <string name="about_fir_download_url">http://fir.im/coreader</string>
     <string name="about_email_content_tip">From CoReader App</string>
+
+    <string name="retry">Retry</string>
+    <string name="unknown_error">Unknown Error</string>
+    <string name="a11y_user_photo">user photo</string>
+    <string name="a11y_user_name">user name</string>
+    <string name="search_hint">search repositories</string>
+    <string name="repo_full_name"><b>%s</b>/%s</string>
+    <string name="empty_search_result">No results for <b>%s</b></string>
+    <string name="a11y_contributor_avatar">contributor avatar</string>
 </resources>
